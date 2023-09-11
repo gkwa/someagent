@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include taylorm.fluentd"
+      include_role:
+        name: "taylorm.fluentd"

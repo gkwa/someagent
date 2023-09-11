@@ -1,0 +1,8 @@
+- name: stuff
+  hosts: localhost
+  tasks:
+
+  - name:
+    ansible.builtin.include_role:
+      name: fluentd
+      tasks_from: main
