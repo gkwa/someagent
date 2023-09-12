@@ -1,0 +1,21 @@
+- name: Create test directory.
+  ansible.builtin.file:
+    state: directory
+    path: ../{{ item }}
+  loop:
+  - test1
+
+- name: Create fluentd.conf template for tests.
+  ansible.builtin.template:
+    src: '{{ item }}/fluentd.conf.j2'
+    dest: ../{{ item }}/fluentd.conf
+  loop:
+  - test1
+
+- name: Create test.sh template for tests.
+  ansible.builtin.template:
+    src: '{{ item }}/{{ item }}.sh'
+    dest: ../{{ item }}/{{ item }}.sh
+    mode: u+x
+  loop:
+  - test1

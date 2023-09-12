@@ -1,4 +1,5 @@
-- name: Create test directory.
-  ansible.builtin.file:
-    state: directory
-    path: test1
+- name: test1
+  include_tasks: test1.yml
+
+- name: test2
+  include_tasks: test2.yml
