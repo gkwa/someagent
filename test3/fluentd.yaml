@@ -10,7 +10,7 @@ config:
       $tag: myapp.access
       $type: record_transformer
       record:
-        host_param: !fluent/s "#{Socket.gethostname}"
+        host_param: '!fluent/s "#{Socket.gethostname}"'
 
   - match:
       $tag: myapp.access
