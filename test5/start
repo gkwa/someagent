@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+docker run --publish 9880:9880 --volume $(pwd)/tmp:/fluentd/etc fluent/fluentd:edge-debian --config /fluentd/etc/fluentd.yaml
