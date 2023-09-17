@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-curl -X POST -d 'json={"json":"message"}' http://127.0.0.1:9880/sample.test

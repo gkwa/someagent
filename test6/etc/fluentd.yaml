@@ -1,0 +1,9 @@
+config:
+- source:
+    $type: tail
+    path: /tmp/httpd-access.log
+    tag: apache.access
+    pos_file: /tmp/httpd-access.log.pos
+
+    parse:
+        $type: apache2
