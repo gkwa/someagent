@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+docker run \
+    --rm \
+    --volume $(pwd)/etc:/fluentd/etc \
+    --volume $(pwd)/httpd-access.log:/tmp/httpd-access.log \
+    fluent/fluentd:edge-debian --config /fluentd/etc/fluentd.yaml

@@ -6,4 +6,8 @@ config:
     pos_file: /tmp/httpd-access.log.pos
 
     parse:
-        $type: apache2
+        $type: apache
+
+- match:
+    $tag: '**'
+    $type: stdout

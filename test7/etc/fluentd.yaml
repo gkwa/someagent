@@ -1,0 +1,26 @@
+config:
+- source:
+    $type: forward
+    port: 24224
+
+- source:
+    $type: tail
+    $label: '@SYSTEM'
+
+# <source>
+#  @type tail
+#  @label @PHP_ERROR
+#  path ./logs/php_errors1.log
+#  format none
+#  pos_file ./php_errors1.log.pos
+# </source>
+
+# <label @PHP_ERROR>
+#  <match **>
+#   @type detect_exceptions
+#   remove_tag_prefix foo
+#   message log
+#   languages php
+#   multiline_flush_interval 0.1
+#  </match>
+# </label>
