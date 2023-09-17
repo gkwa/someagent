@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+echo '192.168.2.20 - - [28/Jul/2006:10:27:10 -0300] "GET /cgi-bin/try/ HTTP/1.0" 200 3395' >>httpd-access.log
