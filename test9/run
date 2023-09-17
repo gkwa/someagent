@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+if docker ps --quiet --filter "name=myfluentd" | grep --quiet .; then
+    docker rm --force --volumes myfluentd
+fi
+
+docker run --detach --rm --name myfluentd \
+    --volume $(pwd)/etc:/fluentd/etc \
+    --volume $(pwd)/cloud-init.log:/tmp/cloud-init.log \
+    fluent/fluentd:edge-debian \
+    --config /fluentd/etc/fluentd.yaml
+
+while [ -z "$(docker logs myfluentd | grep 'fluentd worker is now running worker')" ]; do
+    echo waiting for myfluentd container
+    sleep 1
+done
+
+./test
+
+docker logs myfluentd

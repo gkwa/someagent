@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+docker run \
+    --rm \
+    --volume $(pwd)/etc:/fluentd/etc \
+    --volume $(pwd)/cloud-init.log:/tmp/cloud-init.log \
+    fluent/fluentd:edge-debian --config /fluentd/etc/fluentd.yaml

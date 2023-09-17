@@ -1,0 +1,17 @@
+config:
+
+- source:
+    $type: tail
+    path: /tmp/cloud-init.log
+    tag: cloud-init
+    pos_file: /tmp/cloud-init.log.pos
+
+    parse:
+        $type: regexp
+        expression: '^(?<ip>[^ ]+) (?<t1>[^ ]*) (?<t2>[^ ]+) \[(?<logtime>[^\]]*)\] "(?<stuff>[^"]*)" (?<status_code>\d+) (?<size>\d*)'
+        time_key: logtime
+        time_format: "%d/%b/%Y:%H:%M:%S %z"
+
+- match:
+    $tag: '**'
+    $type: stdout
