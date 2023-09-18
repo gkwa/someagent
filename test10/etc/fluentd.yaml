@@ -1,0 +1,21 @@
+config:
+- source:
+    $type: tail
+    path: /tmp/cloud-init.log
+    tag: cloud-init
+    pos_file: /tmp/cloud-init.log.pos
+
+    parse:
+        $type: multiline
+        format_firstline: '/\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}/'
+        format1: '/(?<logtime>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}),(?<line_number>\d+) - (?<script>[^\.]+\.py)\[(?<level>[^\]]*)\]: (?<message>.*)\n/'
+        format2: '/Command: \[.(?<path>[^\]]*).\].*\n/'
+        format3: '/Exit code: (?<exit_code>\d+)\n/'
+        format4: '/Reason: (?<reason>.*)\n/'
+        format5: '/Stdout: (?<stdout>.*)\n/'
+        format6: '/Stderr: (?<stderr>.*)/'
+        time_format: "%Y-%m-%d %H:%M:%S"
+
+- match:
+    $tag: '**'
+    $type: stdout

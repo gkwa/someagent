@@ -2,6 +2,9 @@
   "folders": [
     {
       "path": "."
+    },
+    {
+      "path": "../../../../../private/tmp/northflierlogs/data/logs"
     }
   ],
   "settings": {}

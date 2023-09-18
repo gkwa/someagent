@@ -8,9 +8,11 @@ config:
 
     parse:
         $type: regexp
-        expression: '^(?<ip>[^ ]+) (?<t1>[^ ]*) (?<t2>[^ ]+) \[(?<logtime>[^\]]*)\] "(?<stuff>[^"]*)" (?<status_code>\d+) (?<size>\d*)'
+        expression: '^(?<logtime>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}),\d* - (?<message>subp.py\[DEBUG\]:.*)'
         time_key: logtime
-        time_format: "%d/%b/%Y:%H:%M:%S %z"
+        time_format: "%Y-%m-%d %H:%M:%S"
+
+
 
 - match:
     $tag: '**'
